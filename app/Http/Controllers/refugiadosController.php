@@ -7,9 +7,16 @@ use Illuminate\Support\Facades\DB;
 use  App\Models\departamento;
 use  App\Models\refugio;
 use  App\Models\refugiado;
+use  App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class refugiadosController extends Controller
 {
+
+    public function importExportView()
+    {
+       return view('import');
+    }
 
     public function verbusqueda(Request $request){
         $refugiados   =   refugiado::orderBy("nombre",'ASC')->get();
@@ -22,14 +29,25 @@ class refugiadosController extends Controller
     }
 
 
+    public function import() 
+    {
+        Excel::import(new UsersImport,request()->file('file'));
+           
+       return back();
+    }
+
     public function veragregarrefugiado(Request $request){
         $departamentos = departamento::all();
-        $refugios   =   refugio::all();
+        $refugios   =   DB::table('refugiados')->select('refugio')->distinct()->get();
         $refugiados   =   refugiado::orderBy("nombre",'ASC')->get();
-        return view('addrefugiado', ['refugiados' => $refugiados, 'departamentos' => $departamentos, 'refugios' => $refugios, 'status'=>null]);
+       // var_dump($refugios);
+       return view('addrefugiado', ['refugiados' => $refugiados, 'departamentos' => $departamentos, 'refugios' => $refugios, 'status'=>null]);
     }
     public function agregarrefugiado(Request $request){
         $refugiados   =   refugiado::orderBy("nombre",'ASC')->get();
+
+        $user = refugiado::where('nombre',$request->nombre)->first();
+        if ($user == null){
         if ($request->refugios_id == "otro"){
             //CREAR NUEVO REFUGIO.
         $refugio = new refugio;
@@ -40,13 +58,16 @@ class refugiadosController extends Controller
         }
 
         $refugiado = new refugiado;
+        $refugiado->departamentos_id = $request->departamentos_id;
+        $refugiado->refugio = $request->refugio;
         $refugiado->nombre = $request->nombre;
         $refugiado->identidad = $request->identidad;
         $refugiado->telefono = $request->telefono;
-        $refugiado->refugios_id = $request->refugios_id;
         $refugiado->save();
-        $departamentos = departamento::all();
-        $refugios   =   refugio::all();
+     
+    }
+    $departamentos = departamento::all();
+    $refugios   =   refugio::all();
         return view('addrefugiado', ['refugiados' => $refugiados, 'departamentos' => $departamentos, 'refugios' => $refugios, 'status'=>'Refugiado Agregado!']);
     }
     public function veragregarrefugio(Request $request){

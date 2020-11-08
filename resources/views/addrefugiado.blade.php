@@ -18,8 +18,17 @@
      "{{$refugiado->nombre}}",
     @endforeach
     ];
+
+    var refugios =
+    [@foreach ($refugios as $refugio)
+     "{{$refugio->refugio}}",
+    @endforeach
+    ];
     $( "#nombre" ).autocomplete({
       source: nombres
+    });
+    $( "#refugio" ).autocomplete({
+      source: refugios
     });
   } );
   </script>
@@ -37,7 +46,7 @@
     </div>
 
     <div>
-    Instrucciones: Escribe el nombre completo de la persona, si ves que el nombre ya aparece en la lista, esta persona ya esta en el sistema, si no, agrega todos los datos posibles de la persona, selecciona el departamento y el refugio. Si no encuentras el refugio, escoge NO ESTA EN LA LISTA y agrega el nombre del nuevo refugio en el campo Nuevo Refugio, de ahora en adelante, el nuevo refugio aparecerá en la lista. 
+    Instrucciones: Escribe el nombre completo de la persona, si ves que el nombre ya aparece en la lista, significa que la persona ya existe en la base de datos. Para el refugio escribe el nombre del refugio, si ves que ya existe en la lista, seleccionalo. Si no, escribe el nombre del refugio y estará disponible para nuevos registros de refugiados.
     </div>
     <div class="card-body">
       <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('agregarrefugiado')}}">
@@ -60,28 +69,19 @@
         </div>
         <div class="form-group">
           <label for="departamento">Departamento</label>
-             <select name="departamentos_id" id="departamentos_id" class="form-control dynamic" required="" data-dependent="refugios_id">
-             <option value="">SELECCIONA EL DEPARTAMENTO</option>
+             <select name="departamentos_id" id="departamentos_id" class="form-control dynamic" required="">
+             <option value="" disabled>SELECCIONA EL DEPARTAMENTO</option>
           @foreach($departamentos as $departamento)
   <option value="{{$departamento->id}}">{{$departamento->departamento}}</option>
   @endforeach
 </select>
         </div>
         <div class="form-group">
-          <label for="refugios_id">Refugio (SI NO LO ENCUENTRAS ELIGE NO ESTA EN LA LISTA)</label>
+          <label for="refugio">Refugio </label>
 
-          <select name="refugios_id" id="refugios_id" class="select2 form-control input-lg dynamic2">
-                      
-                      <option value="" selected disabled>Elegir Refugio</option>
-                      <option value="otro">NO ESTA EN ESTA LISTA</option>
-                   
-                    </select>
+          <input type="text" id="refugio" name="refugio" class="form-control" required="">
         </div>
 
-        <div class="form-group" id="nuevo_refugio" style="visibility: hidden;">
-          <label for="telefono">Nuevo Refugio</label>
-          <input type="text" id="refugio" name="nuevo_refugio" class="form-control" >
-        </div>
 
         <button type="submit" class="btn btn-primary">Agregar Refugiado</button>
         <a href="http://hondurastebusca.com"><span  class="btn btn-danger">ATRAS</span></a>

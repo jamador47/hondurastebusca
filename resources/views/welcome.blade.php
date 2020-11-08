@@ -74,6 +74,8 @@
                 <img src="http://hondurastebusca.com/Pueblo.jpg" alt="Girl in a jacket" width="300" height="300">
                 <br>
                     HONDURAS TE BUSCA
+
+                   
                 </div>
                 
 
@@ -82,6 +84,20 @@
                     <a href={{ route('buscar.ref') }}>BUSCAR REFUGIADO</a>
                     <a href={{ route('agregar.ref') }}>AGREGAR REFUGIADOS</a>
                     <div class="fb-share-button" data-href="http://hondurastebusca.com/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhondurastebusca.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
+
+                </div
+                <br>
+                <br>
+                <div>
+               <strong> Personas en la base de datos: {{$total}} </strong>
+               <br>
+               <br>
+               <div> Reporta cualquier error a nuestra página de facebook: <a href="https://www.facebook.com/Honduras-te-Busca-104104708180305/?notif_id=1604788310968051&notif_t=page_invite_accept&ref=notif">Honduras te Busca</a>  </div>
+              <br>
+              <br>
+              <br>
+                <div><strong> Otros recursos para búsqueda de personas:</strong> <a href="https://app.hondurastebusca.com/">App Honduras te Busca - Christian Echeverría</a>  </div>
+                <div><strong> Otros recursos para búsqueda de personas: </strong> <a href="https://www.appsheet.com/start/5bb78ff7-1bb7-43f4-a002-3c6112e0373c#appName=RescateHN-1076358&group=%5B%7B%22Column%22%3A%22Departamento%22%2C%22Order%22%3A%22Ascending%22%7D%5D&page=deck&sort=%5B%7B%22Column%22%3A%22_RowNumber%22%2C%22Order%22%3A%22Descending%22%7D%5D&table=Desaparecidos&view=Desaparecidos">RescateHN - René Casaña</a>  </div>
 
                 </div>
             </div>

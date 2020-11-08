@@ -13,7 +13,7 @@ class departamento extends Model
      */
     public function refugios()
     {
-        return $this->hasMany('App\Models\refugio');
+        return $this->hasMany('App\Models\refugiado');
     }
 
 }

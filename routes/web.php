@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use  App\Models\refugiado;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $total = refugiado::all()->count();
+    return view('welcome',['total'=>$total]);
 });
 Route::get('/agregarrefugiado', 'App\Http\Controllers\refugiadosController@veragregarrefugiado');
 Route::post('/agregarrefugiado', 'App\Http\Controllers\refugiadosController@agregarrefugiado')->name('agregar.ref');;
@@ -24,3 +26,9 @@ Route::get('/resultado', 'App\Http\Controllers\refugiadosController@buscar');
 Route::post('/fetch', 'App\Http\Controllers\refugiadosController@fetch')->name('dynamicdependent.fetch');
 Route::get('/buscar', 'App\Http\Controllers\refugiadosController@verbusqueda')->name('buscar.ref');
 Route::post('/buscar', 'App\Http\Controllers\refugiadosController@busqueda');
+
+Route::get('/import', 'App\Http\Controllers\refugiadosController@importExportView')->name('import.view');
+Route::post('/import', 'App\Http\Controllers\refugiadosController@import')->name('import');
+
+
+

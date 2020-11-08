@@ -70,14 +70,14 @@
           <label for="telefono">Teléfono:{{$persona->telefono}}</label>
         </div>
         @endif
-        @if($persona->refugio->departamento->departamento)
+        @if($persona->departamentos_id != NULL)
         <div class="form-group">
-          <label for="departamento">Departamento: {{$persona->refugio->departamento->departamento}}</label>
+          <label for="departamento">Departamento: {{$persona->departamento->departamento}}</label>
         </div>
         @endif
-        @if($persona->refugio->nombre)
+        @if($persona->refugio)
         <div class="form-group">
-          <label for="refugios_id">Refugio: {{$persona->refugio->nombre}}</label>
+          <label for="refugios_id">Refugio: {{$persona->refugio}}</label>
         </div>
         @endif
         @endforeach

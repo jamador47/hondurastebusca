@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class refugiado extends Model
 {
     use HasFactory;
-    /**
-     * @return HasMany
-     */
-    public function refugio()
+
+    public function departamento()
     {
-        return $this->belongsTo('App\Models\refugio','refugios_id');
+        return $this->belongsTo('App\Models\departamento','departamentos_id');
     }
+
+    protected $fillable = ['nombre,identidad,telefono,edad,refugio'];
 }

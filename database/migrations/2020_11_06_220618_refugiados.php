@@ -15,12 +15,13 @@ class Refugiados extends Migration
     {
         Schema::create('refugiados', function (Blueprint $table) {
         $table->id();
-        $table->string('nombre');
+        $table->string('nombre')->nullable();
         $table->string('identidad')->nullable();
         $table->string('edad')->nullable();
         $table->string('telefono')->nullable();
-        $table->unsignedBigInteger('refugios_id')->nullable();
-        $table->foreign('refugios_id')->references('id')->on('refugios');
+        $table->string('refugio')->nullable();
+        $table->unsignedBigInteger('departamentos_id')->nullable();
+        $table->foreign('departamentos_id')->references('id')->on('departamentos');
         $table->timestamps();
         });
     }
