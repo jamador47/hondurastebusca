@@ -3,6 +3,10 @@
 <head>
     <title>Agregar Refugiado</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -13,7 +17,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script>
   $( function() {
-    var nombres = 
+    var nombres =
     [@foreach ($refugiados as $refugiado)
      "{{$refugiado->nombre}}",
     @endforeach
@@ -32,6 +36,19 @@
     });
   } );
   </script>
+
+  <style media="screen">
+  html, body {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 200;
+      height: 100vh;
+      margin: 0;
+  }
+
+
+  </style>
 </head>
 <body>
 <div class="container mt-4">
@@ -42,7 +59,7 @@
   @endif
   <div class="card">
     <div class="card-header text-center font-weight-bold">
-      Agregar Refugiado
+      AGREGAR REFUGIADO
     </div>
 
     <div>
@@ -83,14 +100,14 @@
         </div>
 
 
-        <button type="submit" class="btn btn-primary">Agregar Refugiado</button>
+        <button type="submit" class="btn btn-primary">AGREGAR REFUGIADO</button>
         <a href="http://hondurastebusca.com"><span  class="btn btn-danger">ATRAS</span></a>
       </form>
       <div class="fb-share-button" data-href="http://hondurastebusca.com/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhondurastebusca.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
 
     </div>
   </div>
-</div>    
+</div>
 </body>
 
 
@@ -98,7 +115,7 @@
 <script>
     $(document).ready(function(){
         $('.select2').select2();
-    
+
     $('.dynamic2').change(function(){
         if($(this).val() != 'otro')
     {

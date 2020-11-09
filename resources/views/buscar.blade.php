@@ -3,6 +3,10 @@
 <head>
     <title>Buscar Personas</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
@@ -12,7 +16,7 @@
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v8.0&appId=381123249038361&autoLogAppEvents=1" nonce="SzQ4mJuK"></script>
   <script>
   $( function() {
-    var nombres = 
+    var nombres =
     [@foreach ($refugiados as $refugiado)
      "{{$refugiado->nombre}}",
     @endforeach
@@ -22,7 +26,20 @@
     });
   } );
   </script>
+
+  <style media="screen">
+  html, body {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 200;
+      height: 100vh;
+      margin: 0;
+  }
+  </style>
 </head>
+
+
 <body>
 <div class="container mt-4">
   @if($status)
@@ -32,10 +49,10 @@
   @endif
   <div class="card">
     <div class="card-header text-center font-weight-bold">
-      Buscar Persona
+      BUSCAR PERSONA
     </div>
     <div>
-    <strong>Instrucciones:</strong> escribe el nombre de la persona a buscar, a medida vayas escribiendo aparecerán nombres parecidos al que estás buscando, escoge el nombre de la lista y busca a la persona.
+    <strong>Instrucciones:</strong> Escribe el nombre de la persona a buscar, a medida vayas escribiendo aparecerán nombres parecidos al que estás buscando, escoge el nombre de la lista y busca a la persona.
     </div>
     <div class="card-body">
       <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('buscar')}}">
@@ -47,7 +64,7 @@
 
         <button type="submit" class="btn btn-primary">BUSCAR</button>
         <a href="http://hondurastebusca.com"><span  class="btn btn-danger">ATRAS</span></a>
-
+        <br>
         @if ($personas)
         @foreach($personas as $persona)
         <br>
@@ -87,6 +104,6 @@
 
     </div>
   </div>
-</div>    
+</div>
 </body>
 </html>
