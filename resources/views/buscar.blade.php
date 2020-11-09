@@ -65,6 +65,21 @@
         <button type="submit" class="btn btn-primary">BUSCAR</button>
         <a href="http://hondurastebusca.com"><span  class="btn btn-danger">ATRAS</span></a>
         <br>
+
+        @if ($error)
+        <br>
+        <br>
+        <strong>Lamentablemente no se encontró un registro para tu busqueda, sin embargo acá hay dos enlaces para otras plataformas similares que pueden tener el registro</strong>:
+          <br>
+          <br>
+          <div><strong> <a href="https://app.hondurastebusca.com/">App Honduras te Busca - Christian Echeverría</a></strong>   </div>
+          <br>
+          <div><strong><a href="https://www.appsheet.com/start/5bb78ff7-1bb7-43f4-a002-3c6112e0373c#appName=RescateHN-1076358&group=%5B%7B%22Column%22%3A%22Departamento%22%2C%22Order%22%3A%22Ascending%22%7D%5D&page=deck&sort=%5B%7B%22Column%22%3A%22_RowNumber%22%2C%22Order%22%3A%22Descending%22%7D%5D&table=Desaparecidos&view=Desaparecidos">RescateHN - René Casaña</a></strong>   </div>
+          <br>
+
+        @endif
+
+
         @if ($personas)
         @foreach($personas as $persona)
         <br>

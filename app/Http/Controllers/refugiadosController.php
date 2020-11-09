@@ -20,12 +20,21 @@ class refugiadosController extends Controller
 
     public function verbusqueda(Request $request){
         $refugiados   =   refugiado::orderBy("nombre",'ASC')->get();
-        return view('buscar', ['personas'=>null,'refugiados' => $refugiados, 'status'=>null]);
+        return view('buscar', ['personas'=>null,'refugiados' => $refugiados, 'status'=>null, 'error' => false]);
     }
     public function busqueda(Request $request){
         $refugiados   =   refugiado::orderBy("nombre",'ASC')->get();
         $personas  =   refugiado::where("nombre",$request->nombre)->get();
-        return view('buscar', ['personas'=>$personas,'refugiados' => $refugiados, 'status'=>null]);
+        $persona  =   refugiado::where("nombre",$request->nombre)->first();
+        $error = false;
+        
+        if($persona == null){
+            $error = true;
+        }
+
+
+    
+        return view('buscar', ['personas'=>$personas,'refugiados' => $refugiados, 'status'=>null, 'error' => $error]);
     }
 
 
@@ -48,14 +57,7 @@ class refugiadosController extends Controller
 
         $user = refugiado::where('nombre',$request->nombre)->first();
         if ($user == null){
-        if ($request->refugios_id == "otro"){
-            //CREAR NUEVO REFUGIO.
-        $refugio = new refugio;
-        $refugio->nombre = $request->nuevo_refugio;
-        $refugio->departamentos_id = $request->departamentos_id;
-        $refugio->save();
-        $request->refugios_id = $refugio->id;
-        }
+
 
         $refugiado = new refugiado;
         $refugiado->departamentos_id = $request->departamentos_id;
