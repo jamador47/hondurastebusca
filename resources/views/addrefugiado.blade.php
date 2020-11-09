@@ -3,6 +3,10 @@
 <head>
     <title>Agregar Refugiado</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -13,7 +17,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script>
   $( function() {
-    var nombres = 
+    var nombres =
     [@foreach ($refugiados as $refugiado)
      "{{$refugiado->nombre}}",
     @endforeach
@@ -23,6 +27,21 @@
     });
   } );
   </script>
+
+  <style media="screen">
+  html, body {
+      background-color: #fff;
+      color: #000;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 200;
+      height: 100vh;
+      margin: 0;
+  }
+
+  button {
+    margin-bottom: 20px;
+  }
+  </style>
 </head>
 <body>
 <div class="container mt-4">
@@ -33,11 +52,11 @@
   @endif
   <div class="card">
     <div class="card-header text-center font-weight-bold">
-      Agregar Refugiado
+      AGREGAR REFUGIADO
     </div>
 
     <div>
-    Instrucciones: Escribe el nombre completo de la persona, si ves que el nombre ya aparece en la lista, esta persona ya esta en el sistema, si no, agrega todos los datos posibles de la persona, selecciona el departamento y el refugio. Si no encuentras el refugio, escoge NO ESTA EN LA LISTA y agrega el nombre del nuevo refugio en el campo Nuevo Refugio, de ahora en adelante, el nuevo refugio aparecerá en la lista. 
+    Instrucciones: Escribe el nombre completo de la persona, si ves que el nombre ya aparece en la lista, esta persona ya esta en el sistema, si no, agrega todos los datos posibles de la persona, selecciona el departamento y el refugio. Si no encuentras el refugio, escoge NO ESTA EN LA LISTA y agrega el nombre del nuevo refugio en el campo Nuevo Refugio, de ahora en adelante, el nuevo refugio aparecerá en la lista.
     </div>
     <div class="card-body">
       <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{url('agregarrefugiado')}}">
@@ -71,10 +90,10 @@
           <label for="refugios_id">Refugio (SI NO LO ENCUENTRAS ELIGE NO ESTA EN LA LISTA)</label>
 
           <select name="refugios_id" id="refugios_id" class="select2 form-control input-lg dynamic2">
-                      
+
                       <option value="" selected disabled>Elegir Refugio</option>
                       <option value="otro">NO ESTA EN ESTA LISTA</option>
-                   
+
                     </select>
         </div>
 
@@ -83,14 +102,14 @@
           <input type="text" id="refugio" name="nuevo_refugio" class="form-control" >
         </div>
 
-        <button type="submit" class="btn btn-primary">Agregar Refugiado</button>
+        <button type="submit" class="btn btn-primary">AGREGAR REFUGIADO</button>
         <a href="http://hondurastebusca.com"><span  class="btn btn-danger">ATRAS</span></a>
       </form>
       <div class="fb-share-button" data-href="http://hondurastebusca.com/" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhondurastebusca.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Compartir</a></div>
 
     </div>
   </div>
-</div>    
+</div>
 </body>
 
 
@@ -98,7 +117,7 @@
 <script>
     $(document).ready(function(){
         $('.select2').select2();
-    
+
     $('.dynamic2').change(function(){
         if($(this).val() != 'otro')
     {
