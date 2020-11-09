@@ -38,9 +38,7 @@
       margin: 0;
   }
 
-  button {
-    margin-bottom: 20px;
-  }
+
   </style>
 </head>
 <body>
